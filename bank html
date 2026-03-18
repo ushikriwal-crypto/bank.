@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Bank App</title>
+</head>
+<body>
+
+    <h2>Bank Application</h2>
+
+    Enter Amount:
+    <input type="number" id="amount"><br><br>
+
+    <button onclick="deposit()">Deposit</button>
+    <button onclick="withdraw()">Withdraw</button>
+    <button onclick="checkBalance()">Check Balance</button>
+
+    <h3 id="result"></h3>
+
+    <script>
+        let balance = 0;
+
+        function deposit() {
+            let amt = document.getElementById("amount").value;
+            amt = Number(amt);
+
+            balance = balance + amt;
+
+            document.getElementById("result").innerHTML =
+                "Deposited: " + amt + " | Balance: " + balance;
+        }
+
+        function withdraw() {
+            let amt = document.getElementById("amount").value;
+            amt = Number(amt);
+
+            if (amt > balance) {
+                document.getElementById("result").innerHTML =
+                    "Insufficient Balance!";
+            } else {
+                balance = balance - amt;
+
+                document.getElementById("result").innerHTML =
+                    "Withdrawn: " + amt + " | Balance: " + balance;
+            }
+        }
+
+        function checkBalance() {
+            document.getElementById("result").innerHTML =
+                "Current Balance: " + balance;
+        }
+    </script>
+
+</body>
+</html>
